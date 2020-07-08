@@ -121,4 +121,17 @@ class ShoppingCartTest < Minitest::Test
 
     assert_equal expected_breakdown, @cart.product_breakdown
   end
+
+  def test_it_can_list_all_product_categories
+    product1 = Product.new(:paper, 'toilet paper', 3.70, '10')
+    product2 = Product.new(:meat, 'chicken', 4.50, '2')
+    product3 = Product.new(:paper, 'tissue paper', 1.25, '1')
+    product4 = Product.new(:produce, 'apples', 0.99, '20')
+    @cart.add_product(product1)
+    @cart.add_product(product2)
+    @cart.add_product(product3)
+    @cart.add_product(product4)
+
+    assert_equal [:paper, :meat, :produce], @cart.product_categories
+  end
 end

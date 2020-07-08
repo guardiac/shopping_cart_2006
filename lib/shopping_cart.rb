@@ -31,4 +31,12 @@ class ShoppingCart
   def sorted_products_by_quantity
     (@products.sort_by { |product| product.quantity }).reverse
   end
+
+  # def product_breakdown
+  #   product_categories
+  # end
+
+  def product_categories
+    (products.map { |product| product.category }).uniq
+  end
 end

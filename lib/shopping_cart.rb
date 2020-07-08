@@ -16,7 +16,7 @@ class ShoppingCart
     {name: @name, capacity: @capacity}
   end
 
-  # def is_full?
-  #   products.length > @capacity
-  # end
+  def is_full?
+    @total_number_of_products > @capacity
+  end
 end

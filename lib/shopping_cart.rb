@@ -32,9 +32,13 @@ class ShoppingCart
     (@products.sort_by { |product| product.quantity }).reverse
   end
 
-  # def product_breakdown
-  #   product_categories
-  # end
+  def product_breakdown
+    breakdown = {}
+    product_categories.each do |category|
+      breakdown[category] = products_by_category(category)
+    end
+    breakdown
+  end
 
   def product_categories
     (products.map { |product| product.category }).uniq

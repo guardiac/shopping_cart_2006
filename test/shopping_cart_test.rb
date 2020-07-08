@@ -87,6 +87,19 @@ class ShoppingCartTest < Minitest::Test
     @cart.add_product(product2)
     @cart.add_product(product3)
 
-    assert_equal 43.33, @cart.percentage_occupied    
+    assert_equal 43.33, @cart.percentage_occupied
+  end
+
+  def test_it_can_sort_the_product_by_quantity
+    product1 = Product.new(:paper, 'toilet paper', 3.70, '10')
+    product2 = Product.new(:meat, 'chicken', 4.50, '2')
+    product3 = Product.new(:paper, 'tissue paper', 1.25, '1')
+    product4 = Product.new(:produce, 'apples', 0.99, '20')
+    @cart.add_product(product1)
+    @cart.add_product(product2)
+    @cart.add_product(product3)
+    @cart.add_product(product4)
+
+    assert_equal [product4, product1, product2, product3], @cart.sorted_products_by_quantity
   end
 end
